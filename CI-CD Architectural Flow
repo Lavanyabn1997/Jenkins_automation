@@ -1,14 +1,19 @@
 # Architecture:
-# Developer → Git → Jenkins → SonarQube → Quality Gate → Jenkins → Deploy
+# Developer → SCM → Jenkins → Build/Test → SonarQube → Artifact Repo → Deploy → Infra → Monitoring
 
+# Complete CI/CD Flow:
 
-# Flow:
-# Code pushed to Git
-# Jenkins pulls code
-# Jenkins builds project
-# Jenkins triggers SonarQube scan
-# SonarQube analyzes code
-# Sends Quality Gate result back to Jenkins
-# Jenkins decides:
-# ✅ Continue deployment
-# ❌ Stop pipeline
+# “A complete CI/CD architecture includes source code management, automated build and testing using Jenkins,code quality analysis with SonarQube, 
+# artifact storage in Artifactory, and deployment to environments using containerization or application servers, followed by monitoring.”
+# 1. Developer pushes code
+# 2. Git triggers Jenkins
+# 3. Jenkins pulls code
+# 4. Maven builds project
+# 5. Unit tests run
+# 6. SonarQube analysis runs
+# 7. Quality Gate check
+# 8. Artifact created
+# 9. Artifact stored in Artifactory
+# 10. Docker image built (optional)
+# 11. Deploy to Dev → QA → Prod
+# 12. Monitor application
