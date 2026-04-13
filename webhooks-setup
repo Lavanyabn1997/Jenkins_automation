@@ -1,0 +1,44 @@
+WebHooks:
+A webhook is a notification from GitHub (or GitLab/Bitbucket) to Jenkins
+Instead of Jenkins polling: Git pushes event → Jenkins immediately starts build 
+
+Flow :
+
+Developer pushes code
+GitHub triggers webhook
+Jenkins receives request
+Pipeline starts automatically
+
+Step-by-Step Git Webhook Setup
+Step 1: Install Required Plugin in Jenkins
+Go to: Manage Jenkins → Manage Plugins 
+Install: Git plugin & GitHub Integration plugin 
+
+Step 2: Configure Jenkins Job
+For Pipeline Job:
+Go to your job → Configure
+✔ Enable: Build Triggers → GitHub hook trigger for GITScm polling
+
+Step 3: Get Jenkins Webhook URL
+http://<jenkins-ip>:8080/github-webhook/    # must end with github-webhook
+
+Step 4: Add Webhook in GitHub
+Go to your repo: Settings → Webhooks → Add webhook
+
+Step 5: Configure Webhook:
+Fill:
+
+| Field        | Value                                      |
+| ------------ | ------------------------------------------ |
+| Payload URL  | `http://<jenkins-ip>:8080/github-webhook/` |
+| Content type | `application/json`                         |
+| Events       | Just the push event                        |
+
+Step 6: Save
+✔ Webhook created
+
+Step 7: Test It
+Make a commit:
+git add .
+git commit -m "test webhook"
+git push
