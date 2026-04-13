@@ -18,6 +18,10 @@ There are 2 different things:
 | ✅ Maven (tool)           | Installed on server (`mvn` command) |
 | ✅ Maven plugin (Jenkins) | Plugin inside Jenkins UI            |
 
+YES ✅ (in most cases)
+If you configure Maven in Global Tool Configuration with “Install Automatically”,
+you DON’T need to install Maven manually on the Ubuntu agent.
+
 In Jenkins pipelines, Maven is used as a configured tool and executed via shell commands, so the
 Maven Integration Plugin is not required unless using freestyle jobs.
 
