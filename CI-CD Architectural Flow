@@ -17,3 +17,14 @@
 # 10. Docker image built (optional)
 # 11. Deploy to Dev → QA → Prod
 # 12. Monitor application
+
+| Stage    | Tool            |
+| -------- | --------------- |
+| Checkout | Git             |
+| Build    | Maven           |
+| Test     | JUnit           |
+| Scan     | SonarQube       |
+| Store    | Artifactory     |
+| Deploy   | Tomcat / Docker |
+| Monitor  | Logs            |
+
