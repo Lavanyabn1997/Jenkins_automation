@@ -1,31 +1,44 @@
 # Installation of Docker on sonarqube VM
+
 sudo apt update
 sudo apt install docker.io -y
 sudo systemctl start docker
 sudo systemctl enable docker
 docker --version
+
 # After istallation you need to add the user to docker group 
 sudo usermod -aG docker ubuntu 
 # sudo usermod -aG $group $user 
- # installing the docker image from docker hub and running the container 
+
+# installing the docker image from docker hub and running the container 
 docker run -d --name sonarqube -p 9000:9000 sonarqube:latest
- # check the container is running or not by running a command
- # command to list the running container 
-docker ps  
+
+# check the container is running or not by running a command
+
+# command to list the running container 
+docker ps
+
 # command to list the non-running container(stoped/exited) 
 docker ps -a   
+
 # If container is not running continuously i.e if the container starts and exited then you need to delete the container and image.
 # after deleteing the container then stop the sonarqube instance and increase the memory of that instance by moving from one instance type to other(i.e t3.micro to t3.medium)
+
 # command to check the memory of the running instance and SonarQube needs at least 2GB RAM
 free -m
+
 # Again start and build and run the command to install the docker image and run the container
 docker run -d --name sonarqube -p 9000:9000 sonarqube:latest
+
 # verify whether the container is running or not 
 docker ps  
+
 # Access the sonarqube by openning the browser
 http://<server-ip>:9000
+
 # login to the sonarqube dashboard by providing the username and password
 username: admin
 password: admin
+
 # After login create a Project and generate a Token by clicking on my Account + security + generate token for no of days
 Analyze "sample-project" 1: sqp_5f216b401c81e0860f234ceb1c7a7549791ad7f0
