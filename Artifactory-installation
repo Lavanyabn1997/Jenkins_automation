@@ -1,0 +1,35 @@
+# Install Artifactory (Linux Tar Package)
+# Update system
+sudo apt update && sudo apt upgrade -y
+
+# Install Java 
+sudo apt install openjdk-17-jdk -y
+java -version
+
+# Download Artifactory OSS or go to official website
+cd /opt
+sudo wget https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss-7.77.8-linux.tar.gz
+
+# Extract package
+sudo tar -xvzf jfrog-artifactory-oss-7.77.8-linux.tar.gz
+sudo mv artifactory-oss-* artifactory
+
+# Create dedicated user
+sudo adduser artifactory
+sudo chown -R artifactory:artifactory /opt/artifactory
+
+# Start Artifactory
+sudo su - artifactory
+cd /opt/artifactory/app/bin
+./artifactory.sh start
+
+# Check the Logs for verification whether the artifactory is successfully started 
+tail -f /opt/artifactory/var/log/console.log
+
+# Access the Artifactory using the browser 
+# http://<your-vm-ip>:8081
+
+# Login to the Artifactory with username and password
+# Default Login
+# Username: admin
+# Password: password
