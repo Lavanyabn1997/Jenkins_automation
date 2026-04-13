@@ -27,4 +27,9 @@ http://<server-ip>:9000
 # login to the sonarqube dashboard by providing the username and password
 username: admin
 password: admin
+# After login create a Project and generate a Token by clicking on my Account + security + generate token for no of days
+Analyze "sample-project" 1: sqp_5f216b401c81e0860f234ceb1c7a7549791ad7f0
+
+
+
 
