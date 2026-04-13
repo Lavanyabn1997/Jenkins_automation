@@ -4,7 +4,40 @@
 # Trigger builds automatically on code changes
 # Work securely using credentials
 
+# Git integration with Jenkins allows Jenkins to pull source code and trigger builds automatically using webhooks or polling. 
+# Authentication is handled using credentials like SSH keys or tokens.”
+
 # Types of Integration:
 # Type	          Description
 # Poll SCM	     Jenkins checks repo periodically
-# Webhook	       Git triggers Jenkins instantly 
+# Webhook	       Git triggers Jenkins instantly
+
+# In real projects → Webhook is used
+
+Step-by-Step Setup
+
+Step 1: Install Git in Jenkins server
+sudo apt install git -y
+git --version
+
+Step 2: Configure Git in Jenkins
+Go to Manage Jenkins → Global Tool Configuration
+Add:Name: git & Path: /usr/bin/git
+
+Step 3: Add Credentials (IMPORTANT)
+Go to Manage Jenkins → Credentials → Global → Add Credentials
+For HTTPS:
+Username + Password / Token
+For SSH (Recommended 🔥):
+Kind: SSH Username with private key
+
+If you are taking the git code as SSH Then please implement the below step or else skip if you are using HTTPS
+
+Step 4: Setup SSH (Best Practice)
+On Jenkins server:
+ssh-keygen
+cat ~/.ssh/id_rsa.pub
+Copy key → add to Git (GitHub/GitLab): Settings → SSH Keys
+
+Step 5: Create Jenkins Job
+1. freestyle Job or Pipeline Job
