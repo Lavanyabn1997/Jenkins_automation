@@ -1,0 +1,66 @@
+Maven:
+Maven is a build + dependency management tool for Java projects
+Maven is a build automation and dependency management tool that uses a pom.xml file to manage project configuration, dependencies
+and lifecycle phases like compile, test, and package.
+
+POM = Project Object Model 
+It is a Heart of Maven
+It contains:Project info , Dependencies , Plugins , Build configuration
+
+Maven Life Cycle:
+clean → validate → compile → test → package → verify → install → deploy
+
+Maven integration with Jenkins allows automated build, test, and packaging of applications using Maven lifecycle phases within a CI/CD pipeline.
+
+There are 2 different things:
+| Type                     | Meaning                             |
+| ------------------------ | ----------------------------------- |
+| ✅ Maven (tool)           | Installed on server (`mvn` command) |
+| ✅ Maven plugin (Jenkins) | Plugin inside Jenkins UI            |
+
+In Jenkins pipelines, Maven is used as a configured tool and executed via shell commands, so the
+Maven Integration Plugin is not required unless using freestyle jobs.
+
+Step 1: Prepare Ubuntu VM-----------Install Java + Maven:
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+sudo apt install maven -y
+
+java -version
+mvn -version
+
+Step 2: Install & Setup Jenkins
+sudo apt install jenkins -y
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+step 3: Access via browser 
+http://<your-ip>:8080
+
+Step 4: Configure Tools in Jenkins
+Go to: Manage Jenkins → Global Tool Configuration
+
+✅ Add JDK
+
+| Field | Value                                |
+| ----- | ------------------------------------ |
+| Name  | `jdk17`                              |
+| Path  | `/usr/lib/jvm/java-17-openjdk-amd64` |
+
+✅ Add Maven
+
+| Field                 | Value          |
+| --------------------- | -------------- |
+| Name                  | `maven_3.9.14` |
+| Install automatically | ✔              |
+
+Step 5: Create Jenkins Pipeline Job
+Go to Jenkins ----- Click New Item-----Select Pipeline------Give name: maven-pipeline
+
+Step 9: Automate with Git Webhook
+In GitHub: Settings → Webhooks
+Add: http://<jenkins-ip>:8080/github-webhook/
+✔ Now build triggers automatically
+
+
+
