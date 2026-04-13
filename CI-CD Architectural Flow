@@ -25,6 +25,6 @@
 | Test     | JUnit           |
 | Scan     | SonarQube       |
 | Store    | Artifactory     |
-| Deploy   | Tomcat / Docker |
+| Deploy   |Tomcat/Docker/K8s|
 | Monitor  | Logs            |
 
