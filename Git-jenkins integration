@@ -1,0 +1,10 @@
+# Git-jenkins integration means:
+# Jenkins should be able to:
+# Pull code from Git repo
+# Trigger builds automatically on code changes
+# Work securely using credentials
+
+# Types of Integration:
+# Type	          Description
+# Poll SCM	     Jenkins checks repo periodically
+# Webhook	       Git triggers Jenkins instantly 
