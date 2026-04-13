@@ -1,6 +1,10 @@
 # Architecture:
 # Developer → SCM → Jenkins → Build/Test → SonarQube → Artifact Repo → Deploy → Infra → Monitoring
 
+# High-Level Architecture:
+Developer → Git → Jenkins → Build → SonarQube → Quality Gate → 
+Artifact Repo → Docker Build → Push Image → Deploy → Kubernetes
+
 # Complete CI/CD Flow:
 
 # “A complete CI/CD architecture includes source code management, automated build and testing using Jenkins,code quality analysis with SonarQube, 
