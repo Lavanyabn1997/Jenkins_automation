@@ -1,0 +1,14 @@
+# Architecture:
+# Developer → Git → Jenkins → SonarQube → Quality Gate → Jenkins → Deploy
+
+
+# Flow:
+# Code pushed to Git
+# Jenkins pulls code
+# Jenkins builds project
+# Jenkins triggers SonarQube scan
+# SonarQube analyzes code
+# Sends Quality Gate result back to Jenkins
+# Jenkins decides:
+# ✅ Continue deployment
+# ❌ Stop pipeline
